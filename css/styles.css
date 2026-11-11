@@ -101,3 +101,27 @@ footer{max-width:62rem;margin:0 auto;padding:1.5rem;color:var(--muted);border-to
 .social a{display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;border-radius:50%;border:1px solid var(--line);color:var(--muted)}
 .social a:hover{color:var(--accent);border-color:var(--accent)}
 .social svg{width:1.25rem;height:1.25rem}
+
+
+/* ---------- Hamburger menu (small screens) ----------
+   Change 720px below to move the point where the menu collapses. */
+.menubtn{display:none;-webkit-tap-highlight-color:transparent;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;padding:0;background:transparent;border:1px solid var(--line);border-radius:8px;color:var(--ink);cursor:pointer}
+.menubtn:hover{border-color:var(--accent)}
+.menubtn svg{width:1.4rem;height:1.4rem}
+.menubtn .x{display:none}
+.menubtn[aria-expanded="true"] .bars{display:none}
+.menubtn[aria-expanded="true"] .x{display:block}
+
+@media (max-width:720px){
+  .menubtn{display:inline-flex}
+  nav{display:none;flex-direction:column;align-items:stretch;gap:0;width:100%;padding-top:.5rem;border-top:1px solid var(--line)}
+  nav.open{display:flex}
+  nav a{padding:.8rem .25rem;border-bottom:0}
+  nav a[aria-current="page"]{color:var(--ink);font-weight:700}
+  /* projects are listed right under "Work" instead of in a dropdown */
+  .dd{flex-direction:column;align-items:stretch}
+  .ddbtn{display:none}
+  .ddmenu{display:block;position:static;min-width:0;padding:0 0 .25rem 1rem;background:transparent;border:0;box-shadow:none}
+  .ddmenu a{padding:.65rem .5rem;color:var(--muted)}
+  .ddmenu a[aria-current="page"]{color:var(--ink)}
+}
