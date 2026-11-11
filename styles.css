@@ -1,0 +1,103 @@
+/* ============================================================
+   Ahmed Kabia – UX Portfolio · css/styles.css
+   Colors, fonts and spacing are set in the :root variables below.
+   The dark-mode colors are redefined in the prefers-color-scheme block.
+   ============================================================ */
+
+:root{--bg:#F3F5F7;--surface:#FFFFFF;--ink:#14202B;--muted:#55636F;--line:#D5DCE3;--accent:#1F5FBF;--tint:#DCE6F2;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10171E;--surface:#18222B;--ink:#E8EDF2;--muted:#9AA8B5;--line:#2C3945;--accent:#6FA3F0;--tint:#1F2E40;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#10171E;--surface:#18222B;--ink:#E8EDF2;--muted:#9AA8B5;--line:#2C3945;--accent:#6FA3F0;--tint:#1F2E40;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 "Source Serif 4",Georgia,serif}
+h1,h2,h3,nav{font-family:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+/* ---------- Header & navigation ---------- */
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.75rem 2rem;max-width:62rem;margin:0 auto;padding:1.25rem 1.5rem}
+.brand{font-weight:700;font-size:1.1rem;text-decoration:none;color:var(--ink)}
+nav{display:flex;flex-wrap:wrap;gap:1.25rem;font-weight:500}
+nav a{color:var(--muted);text-decoration:none;padding:.25rem 0;border-bottom:2px solid transparent}
+nav a:hover,nav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent)}
+
+/* ---------- Page layout ---------- */
+main{max-width:62rem;margin:0 auto;padding:1rem 1.5rem 4rem}
+
+/* ---------- Home page hero ---------- */
+.hero{padding:3rem 0 2.5rem;max-width:44rem}
+h1{font-size:clamp(2.2rem,6vw,3.8rem);line-height:1.08;margin:0 0 1.25rem;letter-spacing:-.02em}
+h2{font-size:1.7rem;line-height:1.2;margin:2.5rem 0 .75rem}
+h3{font-size:1.15rem;margin:1.5rem 0 .4rem}
+.lede{font-size:1.25rem;color:var(--muted);margin:0 0 1.5rem}
+.btn{display:inline-block;background:var(--accent);color:var(--bg);font:500 1rem "Bricolage Grotesque",sans-serif;padding:.7rem 1.2rem;border-radius:6px;text-decoration:none}
+.btn.alt{background:transparent;color:var(--accent);border:2px solid var(--accent)}
+
+/* ---------- Project cards ---------- */
+.grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));margin-top:1rem}
+.card{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;color:inherit;text-decoration:none}
+.card:hover{border-color:var(--accent)}
+.thumb{aspect-ratio:16/10;background:var(--tint);display:flex;align-items:center;justify-content:center;color:var(--muted);font:500 .95rem "Bricolage Grotesque",sans-serif}
+.card .body{padding:1rem 1.15rem 1.25rem}
+.card h3{margin:0 0 .35rem}.card p{margin:0;color:var(--muted);font-size:1rem}
+
+/* ---------- Project pages ---------- */
+.meta{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1rem 0;margin:1.5rem 0}
+.meta dt{font:700 .9rem "Bricolage Grotesque",sans-serif}.meta dd{margin:0;color:var(--muted)}
+.prose{max-width:42rem}
+.ph{background:var(--tint);border:1px dashed var(--accent);border-radius:8px;min-height:12rem;display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;color:var(--muted);margin:1.25rem 0;font-family:"Bricolage Grotesque",sans-serif}
+.finding{border-left:4px solid var(--accent);padding:.1rem 0 .1rem 1rem;margin:1rem 0}
+.finding strong{font-family:"Bricolage Grotesque",sans-serif}
+.about{display:block}
+.about .ph{min-height:16rem;margin:0}
+@media (max-width:640px){.about{grid-template-columns:1fr}}
+.back{font:500 .95rem "Bricolage Grotesque",sans-serif;display:inline-block;margin-top:1rem}
+
+/* ---------- Project title row, images & captions ---------- */
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin:1rem 0 1.25rem}.titlerow h1{margin:0}
+figure{margin:1.25rem 0}figcaption{color:var(--muted);font-size:.95rem;margin-top:.45rem}
+.shot{display:block;width:100%;padding:0;border:1px solid var(--line);background:var(--surface);border-radius:8px;cursor:zoom-in;overflow:hidden;color:inherit;font:inherit}
+.shot img{display:block;width:100%;height:auto}
+.shot .ph{margin:0;border:0;border-radius:0}
+.pair{display:grid;align-items:start;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));margin:1.25rem 0}.pair figure{margin:0}
+
+/* ---------- Image viewer (lightbox) ---------- */
+dialog.lb{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;color:#fff}
+dialog.lb::backdrop{background:rgba(8,12,16,.88)}
+.lbwrap{position:relative;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;padding:4.5rem 4rem}
+.lbstage{max-width:100%;display:flex;justify-content:center}
+.lbstage img{max-width:100%;max-height:70vh;height:auto;border-radius:6px}
+.lbstage .ph{width:min(38rem,76vw);min-height:18rem;margin:0;color:var(--ink)}
+.lbstage.tall{display:block;overflow:auto;max-height:72vh;border-radius:6px}
+.lbstage.tall img{display:block;width:min(100%,56rem);max-height:none;margin:0 auto;border-radius:0}
+.lbcap{margin:0;text-align:center;font:500 1rem "Bricolage Grotesque",sans-serif}
+.lbbtn{position:absolute;width:2.75rem;height:2.75rem;border-radius:50%;border:0;background:rgba(255,255,255,.18);color:#fff;font-size:1.3rem;line-height:1;cursor:pointer}
+.lbbtn:hover{background:rgba(255,255,255,.3)}
+.lbclose{top:calc(1rem + env(safe-area-inset-top,0px));right:1rem}
+.lbprev{left:.75rem;top:50%;margin-top:-1.4rem}.lbnext{right:.75rem;top:50%;margin-top:-1.4rem}
+@media (max-width:640px){.lbwrap{padding:4.5rem 3.5rem 2rem}}
+.logo-img{flex:none;width:clamp(5rem,16vw,8rem);height:auto;aspect-ratio:1;object-fit:contain;border-radius:10px;background:#fff}
+.thumb img{display:block;width:100%;height:100%;object-fit:contain;background:#fff}
+
+/* ---------- About section ---------- */
+.aboutsec{margin-top:4rem;padding-top:2rem;border-top:1px solid var(--line)}.aboutsec h2{margin-top:0}
+
+/* ---------- Navigation dropdown ---------- */
+.dd{position:relative;display:flex;align-items:center;gap:.1rem}
+.ddbtn{-webkit-tap-highlight-color:transparent;background:none;border:0;padding:.3rem;color:var(--muted);cursor:pointer;display:inline-flex;border-radius:4px}
+.ddbtn:hover{color:var(--ink)}
+.ddbtn svg{width:1rem;height:1rem;transition:transform .15s}
+.ddmenu{display:none;list-style:none;margin:0;padding:.4rem;position:absolute;top:100%;left:0;min-width:15rem;background:var(--surface);border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.14);z-index:20}
+.ddmenu a{display:block;padding:.55rem .75rem;border-bottom:0;border-radius:6px;color:var(--ink);white-space:nowrap}
+.ddmenu a:hover{background:var(--tint)}
+.dd.open .ddmenu{display:block}
+.dd.open .ddbtn svg{transform:rotate(180deg)}
+@media (hover:hover){.dd:hover .ddmenu,.dd:focus-within .ddmenu{display:block}}
+
+/* ---------- Footer ---------- */
+footer{max-width:62rem;margin:0 auto;padding:1.5rem;color:var(--muted);border-top:1px solid var(--line);font-size:.95rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem}
+.social{display:flex;gap:.75rem}
+.social a{display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;border-radius:50%;border:1px solid var(--line);color:var(--muted)}
+.social a:hover{color:var(--accent);border-color:var(--accent)}
+.social svg{width:1.25rem;height:1.25rem}
