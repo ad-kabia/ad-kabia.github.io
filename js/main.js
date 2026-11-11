@@ -1,7 +1,8 @@
 /* ============================================================
    Ahmed Kabia – UX Portfolio · js/main.js
    1. Projects dropdown in the navigation (tap/click on mobile)
-   2. Image viewer (lightbox) for any figure with data-gallery
+   2. Hamburger menu on small screens
+   3. Image viewer (lightbox) for any figure with data-gallery
    ============================================================ */
 
 /* 1. Navigation dropdown */
@@ -26,7 +27,38 @@
   });
 })();
 
-/* 2. Image viewer
+/* 2. Hamburger menu (the button only shows on small screens; see styles.css) */
+(function () {
+  var btn = document.querySelector(".menubtn"),
+      nav = document.getElementById("mainnav");
+  if (!btn || !nav) return;
+
+  function set(open) {
+    nav.classList.toggle("open", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  btn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    set(!nav.classList.contains("open"));
+  });
+  document.addEventListener("click", function (e) {
+    if (!nav.contains(e.target) && !btn.contains(e.target)) set(false);
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && nav.classList.contains("open")) {
+      set(false);
+      btn.focus();
+    }
+  });
+  /* Reset when the window is widened past the breakpoint (keep in sync with styles.css) */
+  var wide = window.matchMedia("(min-width: 721px)");
+  function onChange(e) { if (e.matches) set(false); }
+  if (wide.addEventListener) wide.addEventListener("change", onChange);
+  else wide.addListener(onChange);
+})();
+
+
+/* 3. Image viewer
    Figures that share the same data-gallery value are grouped, and the
    arrow buttons switch between them. Add data-tall to a figure for very
    tall images so they scroll inside the viewer. */
